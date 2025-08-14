@@ -17,16 +17,8 @@ uv sync
 ```
 
 ### Configure DB
-Create `.env` in project root:
-```
-MYSQL_HOST=127.0.0.1
-MYSQL_PORT=3306
-MYSQL_USER=root
-MYSQL_PASSWORD=your_password
-MYSQL_DATABASE=leverx_homework_3
-```
-
-The script auto-creates the database and tables if they do not exist.
+Create `.env` in project root, copy rows from `.env.example` file and configure 
+database username, password and other options
 
 ### Run
 Default paths assume `input/rooms.json` and `input/students.json` exist.
