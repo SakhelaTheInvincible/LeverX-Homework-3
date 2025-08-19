@@ -39,6 +39,7 @@ Options:
 Indexes used for optimization:
 - `CREATE INDEX idx_students_room ON students(room_id)`
 - `CREATE INDEX idx_students_room_sex_bday ON students(room_id, sex, birthday)`
+- `CREATE INDEX idx_students_room_bday ON students(room_id, birthday)`
 
 ### Reports
 - Rooms and student counts
@@ -47,3 +48,8 @@ Indexes used for optimization:
 - Rooms with mixed sexes
 
 All of them are saved in reports directory
+
+### Internals (for reviewers)
+- Database lifecycle is centralized in `app/db.py` via the `Database` class (connection, database creation, schema, indexes, truncation). Legacy helper functions remain as wrappers.
+- `app/services/json_loader.py` streams `students.json` with `ijson` and opens the file exactly once while batching.
+- Repositories under `app/repositories/` encapsulate SQL for SRP; `ImportService` orchestrates import.
